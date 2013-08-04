@@ -89,8 +89,8 @@ module Github
     # @option options [Fixnum] :per_page Number of items per page
     # @return [Sawyer::Resource] Search results object
     # @see http://developer.github.com/v3/search/#search-code
-    def search_code(query, options = {})
-      get_request("/search/code", query.merge(options))
+    def search_code(query)
+      get_request("/search/code/#{query}")
     end
 
     # Search email
