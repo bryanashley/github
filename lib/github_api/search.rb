@@ -93,6 +93,20 @@ module Github
       get_request("/search/code?#{query}")
     end
 
+    # Search repositories
+    #
+    # @param query [String] Search term and qualifiers
+    # @param options [Hash] Sort and pagination options
+    # @option options [String] :sort Sort field
+    # @option options [String] :direction Sort direction (asc or desc)
+    # @option options [Fixnum] :page Page of paginated results
+    # @option options [Fixnum] :per_page Number of items per page
+    # @return [Sawyer::Resource] Search results object
+    # @see http://developer.github.com/v3/search/#search-repositories
+    def search_repositories(query)
+      get_request("/search/repositories?#{query}")
+    end
+
     # Search email
     #
     # This API call is added for compatibility reasons only. There’s no
