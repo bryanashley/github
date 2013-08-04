@@ -26,10 +26,7 @@ module Github
     def default_options(options={})
       {
         :headers => {
-          ACCEPT           => "application/vnd.github.v3+json," \
-                              "application/vnd.github.beta+json;q=0.5," \
-                              "application/json;q=0.1" \
-                              "application/vnd.github.preview",
+          ACCEPT           => "application/vnd.github.preview",
           ACCEPT_CHARSET   => "utf-8",
           USER_AGENT       => user_agent
         },
