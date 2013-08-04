@@ -90,7 +90,7 @@ module Github
     # @return [Sawyer::Resource] Search results object
     # @see http://developer.github.com/v3/search/#search-code
     def search_code(query)
-      get_request("/search/code/#{query}")
+      get_request("/search/code?#{query}")
     end
 
     # Search email
