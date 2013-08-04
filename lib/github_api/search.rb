@@ -60,6 +60,39 @@ module Github
       get_request("/legacy/user/search/#{escape_uri(keyword)}", arguments.params)
     end
 
+    # Search code
+    #
+    # Find issues by state and keyword.
+    #
+    # = Parameters
+    #  <tt>:state</tt> - open or closed.
+    #  <tt>:keyword</tt> - search term
+    #
+    # = Examples
+    #  github = Github.new
+    #  github.search.issues 'owner', 'repo-name', 'open','api'
+    #  github.search.issues owner: 'owner', repo: 'repo-name', state: 'open', keyword: 'api'
+    #
+    def issues(*args)
+      required = ['owner', 'repo', 'state', 'keyword']
+      arguments(args, :required => required)
+
+      get_request("/legacy/issues/search/#{owner}/#{repo}/#{state}/#{escape_uri(keyword)}", arguments.params)
+    end
+    # Search code
+    #
+    # @param query [String] Search term and qualifiers
+    # @param options [Hash] Sort and pagination options
+    # @option options [String] :sort Sort field
+    # @option options [String] :direction Sort direction (asc or desc)
+    # @option options [Fixnum] :page Page of paginated results
+    # @option options [Fixnum] :per_page Number of items per page
+    # @return [Sawyer::Resource] Search results object
+    # @see http://developer.github.com/v3/search/#search-code
+    def search_code(query, options = {})
+      get_request("/search/code", query.merge(options))
+    end
+
     # Search email
     #
     # This API call is added for compatibility reasons only. There’s no
